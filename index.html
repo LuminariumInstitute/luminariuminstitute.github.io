@@ -3,133 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luminarium</title>
-  <!-- Google Font -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;700&display=swap"
-    rel="stylesheet"
-  />
+  <title>16:9 Cover – Crop Vertically or Horizontally</title>
   <style>
-    /* Basic resets and font */
+    /* Reset/defaults */
     html, body {
       margin: 0;
       padding: 0;
+      width: 100%;
       height: 100%;
-      width: 100%;
-      font-family: 'Figtree', sans-serif;
-      background-color: black;
-      color: white;
+      background: #000;
+      /* We don't want scrollbars if something overflows */
+      overflow: hidden;
     }
 
-    /* Fullscreen video container with "cover" style */
-    .video-container {
+    /* This container always matches the viewport size and hides overflow */
+    .video-wrap {
       position: relative;
-      width: 100%;
-      height: 100vh; /* Use the entire browser height */
-      overflow: hidden; /* Crops anything that extends outside the container */
-      background-color: #000; /* Fallback background */
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden; /* Crops whichever dimension is bigger */
     }
 
-    /* Iframe is centered, sized to at least fill both width & height */
-    .video-container iframe {
+    /* The 16:9 container that we'll dynamically size via media queries */
+    .video-ratio {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      /* Ensures the iframe covers the container in both dimensions */
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
+      background: #000; /* fallback color */
+    }
+
+    .video-ratio iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
       border: none;
     }
 
-    /* Fixed header/nav styles */
-    header {
-      position: fixed;
-      top: 30px;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 180px;
-      box-sizing: border-box;
-      z-index: 10; /* Stay above the video */
-    }
+    /*
+      1) If the viewport aspect ratio is WIDER than 16:9:
+         - We fill the width (100vw).
+         - The height is derived from (9/16 * width).
+         - This may crop *vertically* if the screen is extra wide.
 
-    .menu {
-      display: flex;
-      gap: 30px;
-    }
+      2) If the viewport aspect ratio is NARROWER than 16:9:
+         - We fill the height (100vh).
+         - The width is derived from (16/9 * height).
+         - This may crop *horizontally* if the screen is tall/narrow.
+    */
 
-    .menu a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.2rem;
-      transition: color 0.3s ease;
-    }
-
-    .menu a:hover {
-      color: #00adee;
-    }
-
-    /* The brand is now a link back to luminarium.cc */
-    .brand a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.4rem;
-      font-weight: bold;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      text-align: right;
-      transition: color 0.3s ease;
-    }
-    .brand a:hover {
-      color: #00adee;
-    }
-
-    /* Optional text styling if needed */
-    .tagline {
-      font-size: clamp(1.5rem, 5vw, 3rem);
-      line-height: 1.5;
-      color: white;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-    }
-
-    @media (max-width: 768px) {
-      header {
-        top: 10px;
-        padding: 5px 10px;
+    @media (min-aspect-ratio: 16/9) {
+      /* Viewport is >= 16:9, so fill width, compute height by ratio */
+      .video-ratio {
+        width: 100vw;
+        height: calc(100vw * 9 / 16);
       }
-      .menu {
-        gap: 15px;
+    }
+
+    @media (max-aspect-ratio: 16/9) {
+      /* Viewport is < 16:9, so fill height, compute width by ratio */
+      .video-ratio {
+        height: 100vh;
+        width: calc(100vh * 16 / 9);
       }
     }
   </style>
 </head>
 <body>
-  <!-- Fullscreen "cover" video -->
-  <div class="video-container">
-    <!-- Replace src with your actual embed code as needed -->
-    <iframe
-      src="https://iframe.mediadelivery.net/embed/372083/139c5403-2504-4608-a22e-fb9783c8c2db?autoplay=true&loop=true&muted=true&preload=false&responsive=false"
-      allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-      allowfullscreen
-      loading="lazy">
-    </iframe>
+
+  <div class="video-wrap">
+    <div class="video-ratio">
+      <!-- Place your embed code here -->
+      <iframe
+        src="https://iframe.mediadelivery.net/embed/372083/139c5403-2504-4608-a22e-fb9783c8c2db?autoplay=true&loop=true&muted=true&preload=true&responsive=false&playsinline=true"
+        loading="lazy"
+        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+        allowfullscreen="true">
+      </iframe>
+    </div>
   </div>
 
-  <!-- Fixed header with brand name and navigation -->
-  <header>
-    <nav class="menu">
-      <a href="https://luminarium.cc/artworks">Artworks</a>
-      <a href="https://luminarium.cc/about">About</a>
-    </nav>
-    <!-- LUMINARIUM as a link back to luminarium.cc -->
-    <div class="brand">
-      <a href="https://luminarium.cc">LUMINARIUM</a>
-    </div>
-  </header>
 </body>
 </html>
