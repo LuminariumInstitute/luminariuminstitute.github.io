@@ -30,18 +30,28 @@
       background-color: #000; /* Fallback background */
     }
 
-    /* Iframe is centered, sized to at least fill both width & height */
+    /*
+     * We add "!important" on critical properties to override 
+     * any inline or provider styles that get added with playsinline.
+     */
     .video-container iframe {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      
       /* Ensures the iframe covers the container in both dimensions */
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      border: none;
+      min-width: 100% !important;
+      min-height: 100% !important;
+      width: auto !important;
+      height: auto !important;
+      
+      /* If the provider tries to force max-width or max-height, override it */
+      max-width: none !important;
+      max-height: none !important;
+
+      border: none !important;
+      display: block !important;
     }
 
     /* Fixed header/nav styles */
@@ -52,7 +62,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 250px;
+      padding: 10px 180px;
       box-sizing: border-box;
       z-index: 10; /* Stay above the video */
     }
@@ -73,7 +83,6 @@
       color: #00adee;
     }
 
-    /* The brand is now a link back to luminarium.cc */
     .brand a {
       color: white;
       text-decoration: none;
@@ -85,11 +94,11 @@
       text-align: right;
       transition: color 0.3s ease;
     }
+
     .brand a:hover {
       color: #00adee;
     }
 
-    /* Optional text styling if needed */
     .tagline {
       font-size: clamp(1.5rem, 5vw, 3rem);
       line-height: 1.5;
@@ -111,9 +120,18 @@
 <body>
   <!-- Fullscreen "cover" video -->
   <div class="video-container">
-    <!-- Replace src with your actual embed code as needed -->
+    <!-- Note the added &playsinline=true in the query parameters -->
     <iframe
-      src="https://iframe.mediadelivery.net/embed/372083/139c5403-2504-4608-a22e-fb9783c8c2db?autoplay=true&loop=true&muted=true&preload=true&responsive=false&playsinline=true" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true">
+      src="https://iframe.mediadelivery.net/embed/372083/139c5403-2504-4608-a22e-fb9783c8c2db
+           ?autoplay=true
+           &loop=true
+           &muted=true
+           &preload=false
+           &responsive=false
+           &playsinline=true"
+      allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen
+      loading="lazy">
     </iframe>
   </div>
 
@@ -123,7 +141,6 @@
       <a href="https://luminarium.cc/artworks">Artworks</a>
       <a href="https://luminarium.cc/about">About</a>
     </nav>
-    <!-- LUMINARIUM as a link back to luminarium.cc -->
     <div class="brand">
       <a href="https://luminarium.cc">LUMINARIUM</a>
     </div>
