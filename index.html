@@ -1,50 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Fullscreen Cover Video</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luminarium</title>
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;700&display=swap"
+    rel="stylesheet"
+  />
   <style>
-    /* Make sure HTML/body fill the viewport and have no margins */
+    /* Basic resets and font */
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       width: 100%;
+      font-family: 'Figtree', sans-serif;
+      background-color: black;
+      color: white;
     }
 
-    /* A container that takes the full browser viewport */
+    /* Fullscreen video container with "cover" style */
     .video-container {
       position: relative;
       width: 100%;
-      height: 100vh; /* full viewport height */
-      overflow: hidden; /* hide the cropped parts of the iframe */
-      background-color: #000; /* optional */
+      height: 100vh; /* Use the entire browser height */
+      overflow: hidden; /* Crops anything that extends outside the container */
+      background-color: #000; /* Fallback background */
     }
 
-    /* Iframe is absolutely positioned in the middle, with 'cover'-like sizing */
+    /* Iframe is centered, sized to at least fill both width & height */
     .video-container iframe {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      /* Ensure the iframe is always at least as big as the container in both dimensions. */
+      /* Ensures the iframe covers the container in both dimensions */
       min-width: 100%;
       min-height: 100%;
-      width: auto; 
+      width: auto;
       height: auto;
-      border: none; /* remove iframe border */
+      border: none;
+    }
+
+    /* Fixed header/nav styles */
+    header {
+      position: fixed;
+      top: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 180px;
+      box-sizing: border-box;
+      z-index: 10; /* Stay above the video */
+    }
+
+    .menu {
+      display: flex;
+      gap: 30px;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: #00adee;
+    }
+
+    /* The brand is now a link back to luminarium.cc */
+    .brand a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: right;
+      transition: color 0.3s ease;
+    }
+    .brand a:hover {
+      color: #00adee;
+    }
+
+    /* Optional text styling if needed */
+    .tagline {
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      line-height: 1.5;
+      color: white;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        top: 10px;
+        padding: 5px 10px;
+      }
+      .menu {
+        gap: 15px;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Fullscreen "cover" video -->
   <div class="video-container">
-    <!-- Replace src with your actual embed if needed -->
+    <!-- Replace src with your actual embed code as needed -->
     <iframe
-      src="https://iframe.mediadelivery.net/embed/372083/139c5403-2504-4608-a22e-fb9783c8c2db?autoplay=true&loop=true&muted=true&preload=false&responsive=false"
-      allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-      allowfullscreen
-      loading="lazy">
+      src="https://iframe.mediadelivery.net/embed/372083/139c5403-2504-4608-a22e-fb9783c8c2db?autoplay=true&loop=true&muted=true&preload=false&responsive=false" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true">
     </iframe>
   </div>
+
+  <!-- Fixed header with brand name and navigation -->
+  <header>
+    <nav class="menu">
+      <a href="https://luminarium.cc/artworks">Artworks</a>
+      <a href="https://luminarium.cc/about">About</a>
+    </nav>
+    <!-- LUMINARIUM as a link back to luminarium.cc -->
+    <div class="brand">
+      <a href="https://luminarium.cc">LUMINARIUM</a>
+    </div>
+  </header>
 </body>
 </html>
