@@ -112,7 +112,6 @@
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
     }
 
-
     @media (min-aspect-ratio: 16/9) {
       /* Viewport is >= 16:9, so fill width, compute height by ratio */
       .video-ratio {
@@ -127,6 +126,13 @@
       .video-ratio {
         height: 100vh;
         width: calc(100vh * 16 / 9);
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* Mobile-specific styles */
+      header {
+        padding: 10px 40px;
       }
     }
   </style>

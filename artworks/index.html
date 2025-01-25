@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Specifies the character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile devices -->
+    <title>Luminarium</title> <!-- Sets the title of the page -->
+    <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;700&display=swap" rel="stylesheet"> <!-- Links to Google Fonts -->
+    <style>
+        body {
+            margin: 0; /* Removes default margin around the page */
+            padding: 0; /* Removes default padding around the page */
+            background-color: black; /* Sets the background color to black */
+            color: white; /* Sets the text color to white */
+            font-family: Figtree, sans-serif; /* Defines the primary font for the page */
+            display: flex; /* Enables flexbox layout */
+            flex-direction: column; /* Stacks children vertically */
+            align-items: center; /* Centers children horizontally */
+        }
+
+        .viewport-container {
+            height: 100vh; /* 100% of the viewport height */
+            width: 100vw; /* 100% of the viewport height */
+            display: flex; /* Enables centering */
+            justify-content: center; /* Centers horizontally */
+            align-items: center; /* Centers vertically */
+        }
+
+        .full-screen-text {
+            width: 95%; /* Ensures the text always takes up 90% of the viewport width */
+            max-width: 95%; /* Prevents overflow */
+            text-align: center; /* Centers the text */
+            font-family: 'Homemade Apple', cursive; /* Applies the custom Google Font */
+            margin: auto auto; /* Centers text vertically and horizontally */
+            font-size: clamp(1rem, 5vw, 3rem); /* Dynamically adjusts font size to fit 90% width */
+        }
+
+        .video-section {
+            width: 70%; /* Restricts the section width to 70% of the viewport */
+            margin-top: 20px; /* Adds spacing above the video section */
+            display: flex; /* Enables flexbox layout */
+            flex-direction: column; /* Stacks children vertically */
+            gap: 50px; /* Adds spacing between video containers */
+        }
+
+        .video-container {
+            position: relative; /* Positions child elements relative to this container */
+            margin-bottom: 200px; /* Adds spacing below each container */
+            display: flex; /* Enables flexbox layout */
+            flex-direction: column; /* Stacks children vertically */
+            align-items: flex-start; /* Aligns children to the start of the container */
+            transform: translateX(var(--shift, 0)); /* Shifts the container horizontally */
+        }
+
+        .video-container:nth-child(1) {
+            --shift: -10%; /* Shifts the first container slightly to the left */
+        }
+
+        .video-container:nth-child(2) {
+            --shift: 15%; /* Shifts the second container slightly to the right */
+        }
+
+        .video-container:nth-child(3) {
+            --shift: -20%; /* Shifts the third container further to the left */
+        }
+
+        .video-container iframe {
+            width: 80%; /* Adjusts the size of the videos */
+            max-width: 100%; /* Ensures it doesn’t exceed the container width */
+            aspect-ratio: 16 / 9; /* Maintains a 16:9 aspect ratio */
+            border: none; /* Removes the iframe border */
+        }
+
+        .video-container h2 {
+            margin: 10px 0 5px; /* Adds spacing above and below the heading */
+            font-size: clamp(1rem, 2vw, 1.2rem); /* Makes the font size responsive */
+            text-align: left; /* Aligns text to the left */
+        }
+
+        .video-container p {
+            margin: 0; /* Removes default margin */
+            font-size: clamp(0.8rem, 1.8vw, 1rem); /* Makes the font size responsive */
+            color: #ccc; /* Sets the text color to light gray */
+            text-align: left; /* Aligns text to the left */
+        }
+
+        header {
+            position: fixed;
+            top: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 180px;
+            box-sizing: border-box;
+            z-index: 10; /* Stay above the video */
+        }
+
+        .menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #00adee;
+        }
+
+        .brand a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: right;
+            transition: color 0.3s ease;
+        }
+
+        .brand a:hover {
+            color: #00adee;
+        }
+
+        .tagline {
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            line-height: 1.5;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 40px;
+            }
+
+            .video-container {
+                align-self: center; /* Centers the container on smaller screens */
+               width: 95%;
+                margin-bottom: 95px; /* Reduces spacing below containers */
+                transform: none; /* Removes horizontal shifting */
+            }
+
+            .video-section {
+                width: 100%; /* Expands the section width to 100% of the viewport */
+                gap: 60px; /* Reduces gap between containers for mobile */
+            }
+
+            .full-screen-text {
+        width: 95%; /* Ensures the video takes up 95% of the viewport width */
+        max-width: 95%; /* Ensures no overflow issues */
+                margin: 500px auto; /* Centers text and adjusts vertical spacing */
+            }
+
+            .video-container iframe {
+                width: 100%; /* Makes the video take up 95% of the viewport width */
+                margin: 0 auto; /* Centers the iframe within the container */
+            }
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <nav class="menu">
+      <a href="https://luminarium.cc/artworks">Artworks</a>
+      <a href="https://luminarium.cc/about">About</a>
+    </nav>
+    <div class="brand">
+      <a href="https://luminarium.cc">LUMINARIUM</a>
+    </div>
+  </header>
+
+  <div class="viewport-container">
+    <div class="full-screen-text">
+      Luminous creations that turn the night into art.
+    </div>
+  </div>
+
+  <div class="video-section">
+    <div class="video-container">
+      <iframe src="https://iframe.mediadelivery.net/embed/372083/d9bfac04-b376-4561-8ac6-2ed9473302c3?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
+      <h2>Alchemy of Atmospheres</h2>
+      <p>Sentence describing the installation placeholder lorem ipsum doloret.</p>
+    </div>
+
+    <div class="video-container">
+      <iframe src="https://iframe.mediadelivery.net/embed/372083/139c5403-2504-4608-a22e-fb9783c8c2db?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
+      <h2>The Wavescope</h2>
+      <p>Sentence describing the installation placeholder lorem ipsum doloret.</p>
+    </div>
+
+    <div class="video-container">
+      <iframe src="https://iframe.mediadelivery.net/embed/372083/bd6ba4ad-2227-408b-8ea5-713cd26edf3c?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
+      <h2>Name of Installation 3</h2>
+      <p>Sentence describing the installation placeholder lorem ipsum doloret.</p>
+    </div>
+  </div>
+
+  <footer style="text-align: center; margin: 20px 0; color: #aaa; font-size: 0.9rem;">
+    &copy; 2025 Luminarium. All rights reserved.
+  </footer>
+</body>
+</html>
