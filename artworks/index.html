@@ -1,94 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <meta charset="UTF-8"> <!-- Specifies the character encoding for the document -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile devices -->
-    <title>Luminarium Artworks</title> 
-  <link rel="icon" type="image/png" href="favicon.png?v=2" />
-    <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet"> <!-- Links to Google Fonts -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luminarium Artworks</title>
+    <link rel="icon" type="image/png" href="favicon.png?v=2" />
+    <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         body {
-            margin: 0; /* Removes default margin around the page */
-            padding: 0; /* Removes default padding around the page */
-            background-color: black; /* Sets the background color to black */
-            color: white; /* Sets the text color to white */
-            font-family: Figtree, sans-serif; /* Defines the primary font for the page */
-            display: flex; /* Enables flexbox layout */
-            flex-direction: column; /* Stacks children vertically */
-            align-items: center; /* Centers children horizontally */
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: Figtree, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .viewport-container {
-            height: 20vh; /* 100% of the viewport height */ <!-- s tekstom je 100vh -->
-            width: 100vw; /* 100% of the viewport height */
-            display: flex; /* Enables centering */
-            justify-content: center; /* Centers horizontally */
-            align-items: center; /* Centers vertically */
+            height: 20vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .full-screen-text {
-            width: 95%; /* Ensures the text always takes up 90% of the viewport width */
-            max-width: 95%; /* Prevents overflow */
-            text-align: center; /* Centers the text */
-            font-family: 'Homemade Apple', cursive; /* Applies the custom Google Font */
-            margin: auto auto; /* Centers text vertically and horizontally */
-            font-size: clamp(1rem, 5vw, 3rem); /* Dynamically adjusts font size to fit 90% width */
+            width: 95%;
+            max-width: 95%;
+            text-align: center;
+            font-family: 'Homemade Apple', cursive;
+            margin: auto auto;
+            font-size: clamp(1rem, 5vw, 3rem);
         }
 
         .video-section {
-            width: 70%; /* Restricts the section width to 70% of the viewport */
-            margin-top: 20px; /* Adds spacing above the video section */
-            display: flex; /* Enables flexbox layout */
-            flex-direction: column; /* Stacks children vertically */
-            gap: 50px; /* Adds spacing between video containers */
+            width: 70%;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
         }
 
         .video-container {
-            position: relative; /* Positions child elements relative to this container */
-            margin-bottom: 200px; /* Adds spacing below each container */
-            display: flex; /* Enables flexbox layout */
-            flex-direction: column; /* Stacks children vertically */
-            align-items: flex-start; /* Aligns children to the start of the container */
-            transform: translateX(var(--shift, 0)); /* Shifts the container horizontally */
+            position: relative;
+            margin-bottom: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transform: translateX(var(--shift, 0));
         }
 
-        .video-container:nth-child(1) {
-            --shift: -10%; /* Shifts the first container slightly to the left */
-        }
+        .video-container:nth-child(1) { --shift: -10%; }
+        .video-container:nth-child(2) { --shift: 15%; }
+        .video-container:nth-child(3) { --shift: -20%; }
+        .video-container:nth-child(4) { --shift: 20%; }
 
-        .video-container:nth-child(2) {
-            --shift: 15%; /* Shifts the second container slightly to the right */
-        }
+        /* --- START OF CHANGES --- */
 
-        .video-container:nth-child(3) {
-            --shift: -20%; /* Shifts the third container further to the left */
-        }
-		
-		.video-container:nth-child(4) {
-            --shift: 20%; /* Shifts the third container further to the left */
+        .video-content {
+            width: 80%; /* This now controls the width of the video and the text block */
         }
 
         .video-container iframe {
-            width: 80%; /* Adjusts the size of the videos */
-            max-width: 100%; /* Ensures it doesn’t exceed the container width */
-            aspect-ratio: 16 / 9; /* Maintains a 16:9 aspect ratio */
-            border: none; /* Removes the iframe border */
+            width: 100%; /* Changed from 80% to 100% to fill the wrapper */
+            max-width: 100%;
+            aspect-ratio: 16 / 9;
+            border: none;
         }
 
+        /* --- END OF CHANGES --- */
+
         .video-container h2 {
-            margin: 10px 0 5px; /* Adds spacing above and below the heading */
-            font-size: clamp(1rem, 2vw, 1.2rem); /* Makes the font size responsive */
-            text-align: left; /* Aligns text to the left */
+            margin: 10px 0 5px;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            text-align: left;
         }
 
         .video-container p {
-            margin: 0; /* Removes default margin */
-            font-size: clamp(0.8rem, 1.8vw, 1rem); /* Makes the font size responsive */
-            color: #ccc; /* Sets the text color to light gray */
-            text-align: left; /* Aligns text to the left */
+            margin: 0;
+            font-size: clamp(0.8rem, 1.8vw, 1rem);
+            color: #ccc;
+            text-align: left;
         }
 
         header {
@@ -100,7 +96,7 @@
             align-items: center;
             padding: 10px 180px;
             box-sizing: border-box;
-            z-index: 10; /* Stay above the video */
+            z-index: 10;
         }
 
         .menu {
@@ -148,84 +144,93 @@
             }
 
             .video-container {
-                align-self: center; /* Centers the container on smaller screens */
-               width: 95%;
-                margin-bottom: 95px; /* Reduces spacing below containers */
-                transform: none; /* Removes horizontal shifting */
+                align-self: center;
+                width: 95%;
+                margin-bottom: 95px;
+                transform: none;
             }
 
             .video-section {
-                width: 100%; /* Expands the section width to 100% of the viewport */
-                gap: 60px; /* Reduces gap between containers for mobile */
+                width: 100%;
+                gap: 60px;
             }
 
             .full-screen-text {
-        width: 95%; /* Ensures the video takes up 95% of the viewport width */
-        max-width: 95%; /* Ensures no overflow issues */
-                margin: 500px auto; /* Centers text and adjusts vertical spacing */
+                width: 95%;
+                max-width: 95%;
+                margin: 500px auto;
+            }
+
+            /* --- ADDED RULE FOR MOBILE --- */
+            .video-content {
+                width: 100%;
             }
 
             .video-container iframe {
-                width: 100%; /* Makes the video take up 95% of the viewport width */
-                margin: 0 auto; /* Centers the iframe within the container */
+                width: 100%;
+                margin: 0 auto;
             }
         }
     </style>
 </head>
 <body>
-  <header>
-    <nav class="menu">
-      <a href="https://luminarium.cc/artworks">Artworks</a>
-      <a href="https://luminarium.cc/about">About</a>
-    </nav>
-    <div class="brand">
-      <a href="https://luminarium.cc">L U M I N A R I U M</a>
+    <header>
+        <nav class="menu">
+            <a href="https://luminarium.cc/artworks">Artworks</a>
+            <a href="https://luminarium.cc/about">About</a>
+        </nav>
+        <div class="brand">
+            <a href="https://luminarium.cc">L U M I N A R I U M</a>
+        </div>
+    </header>
+
+    <div class="viewport-container">
+        </div>
+
+    <div class="video-section">
+        <div class="video-container">
+            <div class="video-content">
+                <iframe src="https://iframe.mediadelivery.net/embed/396477/b81ed263-4a6d-4f00-8853-ffe623bb6cfa?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
+                <h2>Alchemy of Atmospheres</h2>
+                <p>Embark on a vivid journey showcasing the intense power of natural forces, from lightning to welding sparks. It is surrounded by a sci-fi atmosphere, potentially representing Venus' captivating ambiance. Yet, it’s more than that; it’s a complex display sparking curiosity about the universe’s energy, both near and far.</p>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <div class="video-content">
+                <iframe src="https://iframe.mediadelivery.net/embed/396477/696d5f7b-1934-4714-957f-57994a2ae550?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
+                <h2>The Wavescope</h2>
+                <p>An abstraction of the phenomenon of waves, that carry energy, light, sound, and information through space, but remain mostly invisible to our senses. With a series of light circles strategically placed throughout the space, The Wavescope makes this hidden phenomenon visible. The installation offers a simple yet powerful visual experience that evokes curiosity and wonder about the magic of waves and vibrations.</p>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <div class="video-content">
+                <iframe src="https://iframe.mediadelivery.net/embed/396477/0f616844-ec87-4f44-925e-95f59af03b15?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
+                <h2>White Noise</h2>
+                <p>A series of light cocoons, entangled strings of light, direct a characteristic sound, known as white noise, which represents a set of sounds of different audible frequencies, among which none dominates, from their interior into the surroundings. The installation presents a unique analogy with the information (white) noise of the modern world, which erases meanings and creates backgrounds in which everything and nothing becomes inextricably intertwined.</p>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <div class="video-content">
+                <iframe src="https://iframe.mediadelivery.net/embed/396477/f7a8ca21-75d4-49e3-bcb0-bd72fcf66fb0?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
+                <h2>Drops from the light painter's brush</h2>
+                <p>Inspired by the creative processes that will take place inside the new building for the arts — painting, crafting, and artistic exploration—the work represents droplets of color falling from an artist’s palette. These small, accidental splashes, often seen as mistakes or unwanted messes, land chaotically on floors or clothes. Yet, they reveal unexpected beauty, symbolizing how art can emerge from chance and how inspiration often flourishes in imperfection.</p>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <div class="video-content">
+                <iframe src="https://iframe.mediadelivery.net/embed/396477/f7a8ca21-75d4-49e3-bcb0-bd72fcf66fb0?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
+                <h2>Cosmic Attraction</h2>
+                <p>This series of installations explores the profound parallels between cosmic phenomena and the full spectrum of human love and attraction.<br>From the explosive spark of a starburst symbolizing new love and the collective strength of a star cluster representing community, through the dual potential for joy or destruction in an asteroid's path, to the enduring passion of a red giant and the fleeting poignancy of a meteor, each work uses the vastness of the universe to illuminate our most intimate emotions.</p>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <div class="viewport-container">
- <!--   <div class="full-screen-text">
-      Luminary &nbsp;creations&nbsp; that&nbsp; turn &nbsp;the&nbsp; night&nbsp; into&nbsp; art.
-    </div>-->
-  </div>
-
-  <div class="video-section">
-    <div class="video-container">
-      <iframe src="https://iframe.mediadelivery.net/embed/396477/b81ed263-4a6d-4f00-8853-ffe623bb6cfa?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
-      <h2>Alchemy of Atmospheres</h2>
-      <p>Embark on a vivid journey showcasing the intense power of natural forces, from lightning to welding sparks. It is surrounded by a sci-fi atmosphere, potentially representing Venus' captivating ambiance. Yet, it’s more than that; it’s a complex display sparking curiosity about the universe’s energy, both near and far.</p>
-    </div>
-
-    <div class="video-container">
-      <iframe src="https://iframe.mediadelivery.net/embed/396477/696d5f7b-1934-4714-957f-57994a2ae550?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
-      <h2>The Wavescope</h2>
-      <p>An abstraction of the phenomenon of waves, that carry energy, light, sound, and information through space, but remain mostly invisible to our senses. With a series of light circles strategically placed throughout the space, The Wavescope makes this hidden phenomenon visible. The installation offers a simple yet powerful visual experience that evokes curiosity and wonder about the magic of waves and vibrations.</p>
-    </div>
-
-    <div class="video-container">
-      <iframe src="https://iframe.mediadelivery.net/embed/396477/0f616844-ec87-4f44-925e-95f59af03b15?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
-      <h2>White Noise</h2>
-      <p>A series of light cocoons, entangled strings of light, direct a characteristic sound, known as white noise, which represents a set of sounds of different audible frequencies, among which none dominates, from their interior into the surroundings. The installation presents a unique analogy with the information (white) noise of the modern world, which erases meanings and creates backgrounds in which everything and nothing becomes inextricably intertwined.</p>
-    </div>
-
-      <div class="video-container">
-      <iframe src="https://iframe.mediadelivery.net/embed/396477/f7a8ca21-75d4-49e3-bcb0-bd72fcf66fb0?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
-      <h2>Drops from the light painter's brush</h2>
-      <p>Inspired by the creative processes that will take place inside the new building for the arts — painting, crafting, and artistic exploration—the work represents droplets of color falling from an artist’s palette. These small, accidental splashes, often seen as mistakes or unwanted messes, land chaotically on floors or clothes. Yet, they reveal unexpected beauty, symbolizing how art can emerge from chance and how inspiration often flourishes in imperfection.</p>
-	  </div>
-
-	
-	      <div class="video-container">
-      <iframe src="https://iframe.mediadelivery.net/embed/396477/f7a8ca21-75d4-49e3-bcb0-bd72fcf66fb0?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
-      <h2>Cosmic Attraction</h2>
-      <p>This series of installations explores the profound parallels between cosmic phenomena and the full spectrum of human love and attraction. 
-	  <br>From the explosive spark of a starburst symbolizing new love and the collective strength of a star cluster representing community, through the dual potential for joy or destruction in an asteroid's path, to the enduring passion of a red giant and the fleeting poignancy of a meteor, each work uses the vastness of the universe to illuminate our most intimate emotions.
-	  </p>
-	  </div>
-    </div>
- 
-  <footer style="text-align: center; margin: 20px 0; color: #aaa; font-size: 0.9rem;">
-    &copy; 2025 Luminarium. All rights reserved.
-  </footer>
+    <footer style="text-align: center; margin: 20px 0; color: #aaa; font-size: 0.9rem;">
+        &copy; 2025 Luminarium. All rights reserved.
+    </footer>
 </body>
 </html>
