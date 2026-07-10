@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luminarium Artworks</title>
     <link rel="icon" type="image/png" href="favicon.png?v=2" />
     <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <style>
         body {
@@ -18,7 +20,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-			overflow-x: hidden;
+            overflow-x: hidden;
         }
 
         .viewport-container {
@@ -44,6 +46,7 @@
             display: flex;
             flex-direction: column;
             gap: 50px;
+            align-items: center;
         }
 
         .video-container {
@@ -51,23 +54,45 @@
             margin-bottom: 200px;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            transform: translateX(var(--shift, 0));
+            align-items: center;
+            width: 100%;
         }
 
-        .video-container:nth-child(1) { --shift: -10%; }
-        .video-container:nth-child(2) { --shift: 15%; }
-        .video-container:nth-child(3) { --shift: -20%; }
-        .video-container:nth-child(4) { --shift: 20%; }
+        /*
+        .video-container:nth-child(1) {
+            --shift: 15%;
+        }
 
-        /* --- START OF CHANGES --- */
+        .video-container:nth-child(2) {
+            --shift: 15%;
+        }
+
+        .video-container:nth-child(3) {
+            --shift: -20%;
+        }
+
+        .video-container:nth-child(4) {
+            --shift: 20%;
+        }
+
+        .video-container:nth-child(5) {
+            --shift: 0%;
+        }
+
+        .video-container:nth-child(6) {
+            --shift: 15%;
+        }
+
+       */
 
         .video-content {
-            width: 80%; /* This now controls the width of the video and the text block */
+            width: 80%;
+            /* This now controls the width of the video and the text block */
         }
 
         .video-container iframe {
-            width: 100%; /* Changed from 80% to 100% to fill the wrapper */
+            width: 100%;
+            /* Changed from 80% to 100% to fill the wrapper */
             max-width: 100%;
             aspect-ratio: 16 / 9;
             border: none;
@@ -174,6 +199,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav class="menu">
@@ -186,52 +212,99 @@
     </header>
 
     <div class="viewport-container">
-        </div>
+    </div>
 
     <div class="video-section">
         <div class="video-container">
             <div class="video-content">
-                <iframe src="https://iframe.mediadelivery.net/embed/396477/b81ed263-4a6d-4f00-8853-ffe623bb6cfa?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
+                <iframe
+                    src="https://iframe.mediadelivery.net/embed/396477/b81ed263-4a6d-4f00-8853-ffe623bb6cfa?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                    allowfullscreen></iframe>
                 <h2>Alchemy of Atmospheres</h2>
-                <p>Embark on a vivid journey showcasing the intense power of natural forces, from lightning to welding sparks. It is surrounded by a sci-fi atmosphere, potentially representing Venus' captivating ambiance. Yet, it’s more than that; it’s a complex display sparking curiosity about the universe’s energy, both near and far.</p>
+                <p>Embark on a vivid journey showcasing the intense power of natural forces, from lightning to welding
+                    sparks. It is surrounded by a sci-fi atmosphere, potentially representing Venus' captivating
+                    ambiance. Yet, it’s more than that; it’s a complex display sparking curiosity about the universe’s
+                    energy, both near and far.</p>
             </div>
         </div>
 
         <div class="video-container">
             <div class="video-content">
-                <iframe src="https://iframe.mediadelivery.net/embed/396477/696d5f7b-1934-4714-957f-57994a2ae550?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
+                <iframe
+                    src="https://iframe.mediadelivery.net/embed/396477/696d5f7b-1934-4714-957f-57994a2ae550?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                    allowfullscreen></iframe>
                 <h2>The Wavescope</h2>
-                <p>An abstraction of the phenomenon of waves, that carry energy, light, sound, and information through space, but remain mostly invisible to our senses. With a series of light circles strategically placed throughout the space, The Wavescope makes this hidden phenomenon visible. The installation offers a simple yet powerful visual experience that evokes curiosity and wonder about the magic of waves and vibrations.</p>
+                <p>An abstraction of the phenomenon of waves, that carry energy, light, sound, and information through
+                    space, but remain mostly invisible to our senses. With a series of light circles strategically
+                    placed throughout the space, The Wavescope makes this hidden phenomenon visible. The installation
+                    offers a simple yet powerful visual experience that evokes curiosity and wonder about the magic of
+                    waves and vibrations.</p>
             </div>
         </div>
 
         <div class="video-container">
             <div class="video-content">
-                <iframe src="https://iframe.mediadelivery.net/embed/396477/0f616844-ec87-4f44-925e-95f59af03b15?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
+                <iframe
+                    src="https://iframe.mediadelivery.net/embed/396477/0f616844-ec87-4f44-925e-95f59af03b15?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                    allowfullscreen></iframe>
                 <h2>White Noise</h2>
-                <p>A series of light cocoons, entangled strings of light, direct a characteristic sound, known as white noise, which represents a set of sounds of different audible frequencies, among which none dominates, from their interior into the surroundings. The installation presents a unique analogy with the information (white) noise of the modern world, which erases meanings and creates backgrounds in which everything and nothing becomes inextricably intertwined.</p>
+                <p>A series of light cocoons, entangled strings of light, direct a characteristic sound, known as white
+                    noise, which represents a set of sounds of different audible frequencies, among which none
+                    dominates, from their interior into the surroundings. The installation presents a unique analogy
+                    with the information (white) noise of the modern world, which erases meanings and creates
+                    backgrounds in which everything and nothing becomes inextricably intertwined.</p>
             </div>
         </div>
 
         <div class="video-container">
             <div class="video-content">
-                <iframe src="https://iframe.mediadelivery.net/embed/396477/f7a8ca21-75d4-49e3-bcb0-bd72fcf66fb0?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
-                <h2>Drops from the light painter's brush</h2>
-                <p>Inspired by the creative processes that will take place inside the new building for the arts — painting, crafting, and artistic exploration—the work represents droplets of color falling from an artist’s palette. These small, accidental splashes, often seen as mistakes or unwanted messes, land chaotically on floors or clothes. Yet, they reveal unexpected beauty, symbolizing how art can emerge from chance and how inspiration often flourishes in imperfection.</p>
+                <iframe
+                    src="https://iframe.mediadelivery.net/embed/396477/f64837f3-018a-4091-93cb-197d1a8d5af5?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                    allowfullscreen></iframe>
+                <h2>Waking the Forest</h2>
+                <p>An interactive installation that translates human touch into an immersive flow of light and sound
+                    along a
+                    tree’s branches. An idle, dim shimmer in the canopy invites visitors to engage with a trunk-mounted
+                    sensor; upon contact, the tree awakens with a surge of light tracing upward through its structure.
+                    Synchronized with a deep soundscape of low heartbeats, creaking wood, and whispering leaves, the
+                    work
+                    turns the profound bond between humanity and nature into a direct, tangible experience.</p>
             </div>
         </div>
 
         <div class="video-container">
             <div class="video-content">
-                <iframe src="https://iframe.mediadelivery.net/embed/396477/39a77a96-61d7-4b5e-b874-a8e364650599?autoplay=false&loop=false&muted=false&preload=true&responsive=true" allowfullscreen></iframe>
+                <iframe
+                    src="https://iframe.mediadelivery.net/embed/396477/39a77a96-61d7-4b5e-b874-a8e364650599?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                    allowfullscreen></iframe>
                 <h2>Cosmic Attraction</h2>
-                <p>This series of installations explores the profound parallels between cosmic phenomena and the full spectrum of human love and attraction.<br>From the explosive spark of a starburst symbolizing new love and the collective strength of a star cluster representing community, through the dual potential for joy or destruction in an asteroid's path, to the enduring passion of a red giant and the fleeting poignancy of a meteor, each work uses the vastness of the universe to illuminate our most intimate emotions.</p>
+                <p>This series of installations explores the profound parallels between cosmic phenomena and the full
+                    spectrum of human love and attraction.<br>From the explosive spark of a starburst symbolizing new
+                    love and the collective strength of a star cluster representing community, through the dual
+                    potential for joy or destruction in an asteroid's path, to the enduring passion of a red giant and
+                    the fleeting poignancy of a meteor, each work uses the vastness of the universe to illuminate our
+                    most intimate emotions.</p>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <div class="video-content">
+                <iframe
+                    src="https://iframe.mediadelivery.net/embed/396477/f7a8ca21-75d4-49e3-bcb0-bd72fcf66fb0?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                    allowfullscreen></iframe>
+                <h2>Drops from the light painter's brush</h2>
+                <p>Inspired by the creative processes that will take place inside the new building for the arts —
+                    painting, crafting, and artistic exploration—the work represents droplets of color falling from an
+                    artist’s palette. These small, accidental splashes, often seen as mistakes or unwanted messes, land
+                    chaotically on floors or clothes. Yet, they reveal unexpected beauty, symbolizing how art can emerge
+                    from chance and how inspiration often flourishes in imperfection.</p>
             </div>
         </div>
     </div>
 
     <footer style="text-align: center; margin: 20px 0; color: #aaa; font-size: 0.9rem;">
-        &copy; 2025 Luminarium. All rights reserved.
+        &copy; 2026 Luminarium. All rights reserved.
     </footer>
 </body>
+
 </html>
